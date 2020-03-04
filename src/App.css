@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.Button {
+  margin-top: 10px;
+}
+
+.buttonCrea {
+  margin-top: 10px;
+}
+
+.mdp {
+  margin-top: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +47,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(73, 79, 82);
+  color: white;
+}
+
+.nav-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
