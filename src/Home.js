@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -24,8 +24,6 @@ class Home extends Component {
     this.setState({
       email: value
     });
-
-
   }
 
   handleChangePassword(event) {
@@ -66,33 +64,28 @@ class Home extends Component {
       });
   }
 
-  créér() {
+  creer() {
     window.location = "/crea";
 
   }
 
   render() {
     return (
-        <div className="App">
-          <header className="App-header">
-            <h1>Login</h1>
-            <label for="name">Adresse mail :</label>
+      <div className="FormCenter">
+            <div className="FormField">
+                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
+                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" onChange={event => this.handleChangeMail(event)} />
+              </div>
 
-            <input type="text" id="name" name="name" required
-              minlength="4" maxlength="40" size="20" onChange={event => this.handleChangeMail(event)}></input>
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="password">Password</label>
+                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" onChange={event => this.handleChangePassword(event)} />
+              </div>
 
-            <label for="name" class="mdp">Mot de passe :</label>
-
-            <input type="text" id="name1" name="name" required
-              minlength="1" maxlength="30" size="20" onChange={event => this.handleChangePassword(event)}></input>
-            <div class="Button">
-              <button onClick={this.handleSubmitForm}>Login</button>
-            </div>
-            <div class="buttonCrea">
-              <button onClick={this.créér}>Créer un compte</button>
-            </div>
-          </header>
-        </div>
+              <div className="FormField">
+                  <button className="FormField__Button mr-20" onClick={this.handleSubmitForm}>Sign In</button> <Link to="/crea" className="FormField__Link">Create an account</Link>
+              </div>
+          </div>
     );
   }
 }

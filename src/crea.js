@@ -9,6 +9,8 @@ import React, { Component } from 'react';
 import { Router } from 'react-router-dom';
 import axios from 'axios';
 
+import { Link } from 'react-router-dom'
+
 
 class crea extends Component {
 
@@ -21,7 +23,7 @@ class crea extends Component {
       nom: "",
       ville: ""
     }
-    this.handleSubmitForm = this.handleSubmitForm.bind(this)
+
   }
 
   handleChangeMail(event) {
@@ -65,22 +67,33 @@ class crea extends Component {
   }
 
   handleSubmitForm() {
+    console.log("test")
     let databody = {
       "email": this.state.email,
       "password": this.state.password,
       "prénom": this.state.prénom,
       "nom": this.state.nom,
-      "ville": this.state.ville
-  }
+      "ville": "Montpellier"
+    }
+    console.log(databody)
     fetch('https://goodieserver.herokuapp.com/api/users/', {
       method: 'POST',
-      mode: 'CORS',
-      body: JSON.stringify(databody),
       headers:{
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(databody)
+    }).then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if(data.res=="correct"){
+        window.location = "/Shop";
       }
-    }).then(res => res.json())
-    .catch(err => err);
+      else{
+        console.log("already exists")
+      }
+    })
+    .catch(err => console.log(err));
   }
 
 
@@ -88,43 +101,52 @@ class crea extends Component {
 
   render() {
     return (
-      <Form>
-        <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={event => this.handleChangeMail(event)} />
-          </Form.Group>
+      <div className="FormCenter">
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="name">Email</label>
+          <input type="text" id="name" className="FormField__Input" placeholder="Enter your email" name="name" onChange={event => this.handleChangeMail(event)} />
+        </div>
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="password">Password</label>
+          <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" onChange={event => this.handleChangePassword(event)} />
+        </div>
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="name">Lastname</label>
+          <input type="test" id="prenom" className="FormField__Input" placeholder="Enter your lastname" name="lastname" onChange={event => this.handleChangeNom(event)} />
+        </div>
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="name">Firstname</label>
+          <input type="text" id="firstname" className="FormField__Input" placeholder="Enter your firstname" name="firstname" onChange={event => this.handleChangePrenom(event)} />
+        </div>
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={event => this.handleChangePassword(event)} />
-          </Form.Group>
-        </Form.Row>
-
-        <Form.Group>
-          <Form.Label>Prénom</Form.Label>
-          <Form.Control placeholder="Saisissez votre prénom" onChange={event => this.handleChangePrenom(event)} />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Nom</Form.Label>
-          <Form.Control placeholder="Saisissez votre nom" onChange={event => this.handleChangeNom(event)} />
-        </Form.Group>
-
-        <Form.Row>
+        <div className="FormField">
+          <label className="FormField__CheckboxLabel">
+              <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={event => this.handleChangeNom(event)} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
+          </label>
+        </div>
+        <div className="FormField">
+        <label className="FormField__Label" htmlFor="name">Ville</label>
+         <Form.Row>
           <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Ville</Form.Label>
             <Form.Control as="select">
               <option>Montpellier</option>
               <option>Lille</option>
             </Form.Control>
           </Form.Group>
-
-          <Button as="input" type="submit" value="Submit" onClick={this.handleSubmitForm()} />
         </Form.Row>
-      </Form>
+        </div>
+
+
+        <div className="FormField">
+            <button className="FormField__Button mr-20" onClick={() => this.handleSubmitForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
+        </div>
+    </div>
+
+       
     )
   }
+
+  
 }
 
 export default crea;
