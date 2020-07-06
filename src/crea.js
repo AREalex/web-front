@@ -115,7 +115,7 @@ class crea extends Component {
           <input type="test" id="prenom" className="FormField__Input" placeholder="Enter your lastname" name="lastname" onChange={event => this.handleChangeNom(event)} />
         </div>
         <div className="FormField">
-          <label className="FormField__Label" htmlFor="name">Firstname</label>
+          <label className="FormField__Label" htmlFor="name">Ffirstname</label>
           <input type="text" id="firstname" className="FormField__Input" placeholder="Enter your firstname" name="firstname" onChange={event => this.handleChangePrenom(event)} />
         </div>
 

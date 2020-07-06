@@ -57,6 +57,9 @@ class Home extends Component {
             window.location = "/Shop";
           } else {
             console.log("Mot de passe incorrect")
+            return res.status(401).json({
+              message: 'Username or password is incorrect'
+            });
           }
         }
 
@@ -78,8 +81,8 @@ class Home extends Component {
               </div>
 
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" onChange={event => this.handleChangePassword(event)} />
+                <label className="FormField__Label" htmlFor="password">Passsword</label>
+                <input type="password" id="password" className="FormField__Input" placeholder="Enteer your password" name="password" onChange={event => this.handleChangePassword(event)} />
               </div>
 
               <div className="FormField">
