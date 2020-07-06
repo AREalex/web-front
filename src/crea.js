@@ -96,7 +96,7 @@ class crea extends Component {
     .catch(err => console.log(err));
   }
 
-  /*handleDeleteForm() {
+  handleDeleteForm() {
     console.log("test")
     let databody = {
       "email": this.state.email,
@@ -105,10 +105,21 @@ class crea extends Component {
       "nom": this.state.nom,
       "ville": "Montpellier"
     }
-    console.log(databody)
     var url = 'https://goodieserver.herokuapp.com/api/users/' + this.state.email
-
     fetch(url, {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+
+        if (data.length == 0) {
+          console.log("email incorrect")
+        }
+        else {
+          if (data[0].password == this.state.password) {
+            console.log("Bon mot de passe")
+            fetch(url, {
       method: 'DELETE',
       headers:{
         'Accept': 'application/json',
@@ -126,7 +137,15 @@ class crea extends Component {
       }
     })
     .catch(err => console.log(err));
-  }*/
+          } else {
+            console.log("Mot de passe incorrect")
+            
+          }
+        }
+      })
+  
+    
+  }
 
 
 
