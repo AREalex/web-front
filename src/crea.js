@@ -96,7 +96,7 @@ class crea extends Component {
     .catch(err => console.log(err));
   }
 
-  handleDeleteForm() {
+  /*handleDeleteForm() {
     console.log("test")
     let databody = {
       "email": this.state.email,
@@ -126,7 +126,7 @@ class crea extends Component {
       }
     })
     .catch(err => console.log(err));
-  }
+  }*/
 
 
 
@@ -173,7 +173,7 @@ class crea extends Component {
             <button className="FormField__Button mr-20" onClick={() => this.handleSubmitForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
         </div>
         <div className="FormField">
-            <button className="FormField__Button mr-20" onClick={() => this.handleDeleteForm()}>Sign Up</button> 
+            <button className="FormField__Button mr-20" onClick={() => this.handleDeleteForm()}>Delete User</button> 
         </div>
     </div>
 
