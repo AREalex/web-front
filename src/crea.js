@@ -82,7 +82,7 @@ class crea extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      //body: JSON.stringify(databody)
+      body: JSON.stringify(databody)
     }).then(response => response.json())
     .then(data => {
       console.log(data)
