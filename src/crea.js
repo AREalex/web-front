@@ -93,7 +93,7 @@ class crea extends Component {
         console.log("already exists")
       }
     })
-    .catch(err => console.log(err));
+    //.catch(err => console.log(err));
   }
 
   handleDeleteForm() {
