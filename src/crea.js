@@ -82,7 +82,7 @@ class crea extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(databody)
+      //body: JSON.stringify(databody)
     }).then(response => response.json())
     .then(data => {
       console.log(data)
@@ -93,7 +93,7 @@ class crea extends Component {
         console.log("already exists")
       }
     })
-    //.catch(err => console.log(err));
+    .catch(err => console.log(err));
   }
 
   handleDeleteForm() {
