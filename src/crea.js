@@ -106,7 +106,9 @@ class crea extends Component {
       "ville": "Montpellier"
     }
     console.log(databody)
-    fetch('https://goodieserver.herokuapp.com/api/users/', {
+    var url = 'https://goodieserver.herokuapp.com/api/users/' + this.state.email
+
+    fetch(url, {
       method: 'DELETE',
       headers:{
         'Accept': 'application/json',
@@ -171,7 +173,7 @@ class crea extends Component {
             <button className="FormField__Button mr-20" onClick={() => this.handleSubmitForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
         </div>
         <div className="FormField">
-            <button className="FormField__Button mr-20" onClick={() => this.handleDeleteForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
+            <button className="FormField__Button mr-20" onClick={() => this.handleDeleteForm()}>Sign Up</button> 
         </div>
     </div>
 
