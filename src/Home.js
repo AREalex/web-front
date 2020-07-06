@@ -57,9 +57,7 @@ class Home extends Component {
             window.location = "/Shop";
           } else {
             console.log("Mot de passe incorrect")
-            return res.status(401).json({
-              message: 'Username or password is incorrect'
-            });
+            
           }
         }
 
