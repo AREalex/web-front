@@ -96,6 +96,36 @@ class crea extends Component {
     .catch(err => console.log(err));
   }
 
+  handleDeleteForm() {
+    console.log("test")
+    let databody = {
+      "email": this.state.email,
+      "password": this.state.password,
+      "prénom": this.state.prénom,
+      "nom": this.state.nom,
+      "ville": "Montpellier"
+    }
+    console.log(databody)
+    fetch('https://goodieserver.herokuapp.com/api/users/', {
+      method: 'DELETE',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(databody)
+    }).then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if(data.res=="correct"){
+        window.location = "/";
+      }
+      else{
+        console.log("already exists")
+      }
+    })
+    .catch(err => console.log(err));
+  }
+
 
 
 
@@ -115,7 +145,7 @@ class crea extends Component {
           <input type="test" id="prenom" className="FormField__Input" placeholder="Enter your lastname" name="lastname" onChange={event => this.handleChangeNom(event)} />
         </div>
         <div className="FormField">
-          <label className="FormField__Label" htmlFor="name">Ffirstname</label>
+          <label className="FormField__Label" htmlFor="name">Firstname</label>
           <input type="text" id="firstname" className="FormField__Input" placeholder="Enter your firstname" name="firstname" onChange={event => this.handleChangePrenom(event)} />
         </div>
 
@@ -139,6 +169,9 @@ class crea extends Component {
 
         <div className="FormField">
             <button className="FormField__Button mr-20" onClick={() => this.handleSubmitForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
+        </div>
+        <div className="FormField">
+            <button className="FormField__Button mr-20" onClick={() => this.handleDeleteForm()}>Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
         </div>
     </div>
 

@@ -79,13 +79,14 @@ class Home extends Component {
               </div>
 
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Passsword</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enteer your password" name="password" onChange={event => this.handleChangePassword(event)} />
+                <label className="FormField__Label" htmlFor="password">Password</label>
+                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" onChange={event => this.handleChangePassword(event)} />
               </div>
 
               <div className="FormField">
                   <button className="FormField__Button mr-20" onClick={this.handleSubmitForm}>Sign In</button> <Link to="/crea" className="FormField__Link">Create an account</Link>
               </div>
+              
           </div>
     );
   }
